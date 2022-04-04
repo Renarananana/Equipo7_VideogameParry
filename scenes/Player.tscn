@@ -1,10 +1,245 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=97 format=2]
 
 [ext_resource path="res://scenes/Player.gd" type="Script" id=1]
-[ext_resource path="res://sprites/Player_sprite.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Player_spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://animations/walk_backright.tres" type="Animation" id=3]
+[ext_resource path="res://animations/walk_frontleft.tres" type="Animation" id=4]
+[ext_resource path="res://animations/walk_backleft.tres" type="Animation" id=5]
+[ext_resource path="res://animations/walk_front.tres" type="Animation" id=6]
+[ext_resource path="res://animations/walk_frontright.tres" type="Animation" id=7]
+[ext_resource path="res://animations/walk_back.tres" type="Animation" id=8]
+[ext_resource path="res://animations/walk_left.tres" type="Animation" id=9]
+[ext_resource path="res://animations/walk_right.tres" type="Animation" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 7.5 )
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "walk_back"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "walk_backleft"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "walk_backright"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "walk_front"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "walk_frontleft"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "walk_frontright"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "walk_right"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=51]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=55]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=56]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=65]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=71]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=74]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=78]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=79]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=81]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=82]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=83]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=84]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=85]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=86]
+
+[sub_resource type="AnimationNodeStateMachine" id=3]
+states/Idle/node = SubResource( 6 )
+states/Idle/position = Vector2( 427, 370 )
+states/walk_back/node = SubResource( 7 )
+states/walk_back/position = Vector2( 435, 620 )
+states/walk_backleft/node = SubResource( 8 )
+states/walk_backleft/position = Vector2( 175.718, 545 )
+states/walk_backright/node = SubResource( 9 )
+states/walk_backright/position = Vector2( 679.718, 499 )
+states/walk_front/node = SubResource( 10 )
+states/walk_front/position = Vector2( 407, 127 )
+states/walk_frontleft/node = SubResource( 11 )
+states/walk_frontleft/position = Vector2( 143, 244 )
+states/walk_frontright/node = SubResource( 12 )
+states/walk_frontright/position = Vector2( 712.718, 232 )
+states/walk_left/node = SubResource( 13 )
+states/walk_left/position = Vector2( 135.718, 399 )
+states/walk_right/node = SubResource( 14 )
+states/walk_right/position = Vector2( 777.718, 362 )
+transitions = [ "walk_frontleft", "walk_front", SubResource( 15 ), "walk_front", "walk_frontleft", SubResource( 16 ), "walk_front", "walk_frontright", SubResource( 17 ), "walk_frontright", "walk_front", SubResource( 18 ), "walk_front", "Idle", SubResource( 19 ), "Idle", "walk_front", SubResource( 20 ), "Idle", "walk_left", SubResource( 21 ), "walk_left", "Idle", SubResource( 22 ), "walk_frontleft", "Idle", SubResource( 23 ), "Idle", "walk_frontleft", SubResource( 24 ), "walk_left", "walk_frontleft", SubResource( 25 ), "walk_frontleft", "walk_left", SubResource( 26 ), "Idle", "walk_back", SubResource( 27 ), "walk_back", "Idle", SubResource( 28 ), "Idle", "walk_backleft", SubResource( 29 ), "walk_backleft", "Idle", SubResource( 30 ), "Idle", "walk_backright", SubResource( 31 ), "walk_backright", "Idle", SubResource( 32 ), "Idle", "walk_right", SubResource( 33 ), "walk_right", "Idle", SubResource( 34 ), "Idle", "walk_frontright", SubResource( 35 ), "walk_frontright", "Idle", SubResource( 36 ), "walk_frontright", "walk_right", SubResource( 37 ), "walk_right", "walk_frontright", SubResource( 38 ), "walk_right", "walk_backright", SubResource( 39 ), "walk_backright", "walk_right", SubResource( 40 ), "walk_backright", "walk_back", SubResource( 41 ), "walk_back", "walk_backright", SubResource( 42 ), "walk_back", "walk_backleft", SubResource( 43 ), "walk_backleft", "walk_back", SubResource( 44 ), "walk_backleft", "walk_left", SubResource( 45 ), "walk_left", "walk_backleft", SubResource( 46 ), "walk_front", "walk_left", SubResource( 47 ), "walk_left", "walk_front", SubResource( 48 ), "walk_front", "walk_backleft", SubResource( 49 ), "walk_backleft", "walk_front", SubResource( 50 ), "walk_front", "walk_back", SubResource( 51 ), "walk_back", "walk_front", SubResource( 52 ), "walk_front", "walk_backright", SubResource( 53 ), "walk_backright", "walk_front", SubResource( 54 ), "walk_front", "walk_right", SubResource( 55 ), "walk_right", "walk_front", SubResource( 56 ), "walk_frontright", "walk_frontleft", SubResource( 57 ), "walk_frontleft", "walk_frontright", SubResource( 58 ), "walk_frontright", "walk_left", SubResource( 59 ), "walk_left", "walk_frontright", SubResource( 60 ), "walk_frontright", "walk_backleft", SubResource( 61 ), "walk_backleft", "walk_frontright", SubResource( 62 ), "walk_frontright", "walk_back", SubResource( 63 ), "walk_back", "walk_frontright", SubResource( 64 ), "walk_frontright", "walk_backright", SubResource( 65 ), "walk_backright", "walk_frontright", SubResource( 66 ), "walk_right", "walk_frontleft", SubResource( 67 ), "walk_frontleft", "walk_right", SubResource( 68 ), "walk_right", "walk_left", SubResource( 69 ), "walk_left", "walk_right", SubResource( 70 ), "walk_right", "walk_backleft", SubResource( 71 ), "walk_backleft", "walk_right", SubResource( 72 ), "walk_right", "walk_back", SubResource( 73 ), "walk_back", "walk_right", SubResource( 74 ), "walk_backright", "walk_frontleft", SubResource( 75 ), "walk_frontleft", "walk_backright", SubResource( 76 ), "walk_backright", "walk_left", SubResource( 77 ), "walk_left", "walk_backright", SubResource( 78 ), "walk_backright", "walk_backleft", SubResource( 79 ), "walk_backleft", "walk_backright", SubResource( 80 ), "walk_back", "walk_frontleft", SubResource( 81 ), "walk_frontleft", "walk_back", SubResource( 82 ), "walk_back", "walk_left", SubResource( 83 ), "walk_left", "walk_back", SubResource( 84 ), "walk_backleft", "walk_frontleft", SubResource( 85 ), "walk_frontleft", "walk_backleft", SubResource( 86 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -204.282, 225.178 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -14,11 +249,30 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.5 )
+scale = Vector2( 10, 10 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 10, 10 )
 texture = ExtResource( 2 )
 hframes = 4
 vframes = 8
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 3 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 4 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.9
+anims/Idle = SubResource( 5 )
+anims/RESET = SubResource( 2 )
+anims/walk_back = ExtResource( 8 )
+anims/walk_backleft = ExtResource( 5 )
+anims/walk_backright = ExtResource( 3 )
+anims/walk_front = ExtResource( 6 )
+anims/walk_frontleft = ExtResource( 4 )
+anims/walk_frontright = ExtResource( 7 )
+anims/walk_left = ExtResource( 9 )
+anims/walk_right = ExtResource( 10 )
