@@ -7,33 +7,24 @@ onready var animTree = $AnimationTree
 onready var animPlayer = $AnimationPlayer
 onready var playback = animTree.get("parameters/playback")
 
+var direction = Vector2.DOWN
+
 
 func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity)
 	
-	var move_input_x = Input.get_axis("left", "right")
-	var move_input_y = Input.get_axis("up", "down")
+	var move_input = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	
-	velocity.x = move_toward(velocity.x, move_input_x * SPEED, ACCELERATION)
-	velocity.y = move_toward(velocity.y, move_input_y * SPEED, ACCELERATION)
+	if move_input.length() != 0:
+		direction = move_input
 	
-	if velocity.x > 10 and abs(velocity.y) <10:
-		playback.travel("walk_right")
-	elif velocity.x > 10 and velocity.y >10:
-		playback.travel("walk_frontright")
-	elif velocity.x < -10 and abs(velocity.y) <10:
-		playback.travel("walk_left")
-	elif velocity.x > 10 and velocity.y < -10:
-		playback.travel("walk_backright")
-	elif velocity.y < -10 and abs(velocity.x) <10:
-		playback.travel("walk_back")
-	elif velocity.x < -10 and velocity.y < -10:
-		playback.travel("walk_backleft")
-	elif velocity.y > 10 and abs(velocity.x) <10:
-		playback.travel("walk_front")
-	elif velocity.x < -10 and velocity.y > 10:
-		playback.travel("walk_frontleft")
+	velocity = velocity.move_toward(move_input * SPEED, ACCELERATION)
+	
+	if velocity.length() > 10:
+		playback.travel("walk")
 	else:
-		playback.travel("Idle") 
+		playback.travel("Idle")
 	
+	animTree.set("parameters/walk/blend_position", direction)
+
