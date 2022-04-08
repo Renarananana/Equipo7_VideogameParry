@@ -10,10 +10,7 @@
 [ext_resource path="res://animations/walk_back.tres" type="Animation" id=8]
 [ext_resource path="res://animations/walk_left.tres" type="Animation" id=9]
 [ext_resource path="res://animations/walk_right.tres" type="Animation" id=10]
-[ext_resource path="res://icon.png" type="Texture" id=11]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 7.5 )
+[ext_resource path="res://sprites/icon.png" type="Texture" id=11]
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Idle"
@@ -110,22 +107,15 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=87]
 extents = Vector2( 16, 16 )
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 7.5 )
+
 [node name="KinematicBody2D" type="KinematicBody2D"]
+position = Vector2( 239, 238 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 0.5 )
-scale = Vector2( 5, 5 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 5, 5 )
-texture = ExtResource( 2 )
-hframes = 4
-vframes = 8
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 3 )
@@ -133,6 +123,12 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 4 )
 parameters/walk/blend_position = Vector2( -0.125862, 0.203125 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.9
@@ -161,3 +157,8 @@ texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
 shape = SubResource( 87 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.5 )
+scale = Vector2( 5, 5 )
+shape = SubResource( 1 )

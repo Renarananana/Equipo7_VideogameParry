@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/Player_spritesheet.png" type="Texture" id=1]
+[ext_resource path="res://scenes/pixelaty.png" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Pixelaty" type="Sprite" parent="."]
+position = Vector2( 499, 282 )
+texture = ExtResource( 2 )
+
+[node name="PlayerSpritesheet" type="Sprite" parent="."]
+position = Vector2( 500, 407 )
+scale = Vector2( 11.4531, 7.20312 )
+texture = ExtResource( 1 )
+hframes = 4
+vframes = 8
