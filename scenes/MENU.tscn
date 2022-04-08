@@ -1,40 +1,44 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/TEMA.tres" type="Theme" id=1]
 [ext_resource path="res://sprites/señales (3).png" type="Texture" id=2]
+[ext_resource path="res://scenes/MENU.gd" type="Script" id=3]
 
 [node name="MENU" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
+script = ExtResource( 3 )
 
 [node name="fondo" type="Sprite" parent="."]
-position = Vector2( 514, 300 )
-scale = Vector2( 2.06131, 1.18694 )
+position = Vector2( 790.336, 405.632 )
+scale = Vector2( 3.17066, 1.60147 )
 texture = ExtResource( 2 )
 
 [node name="Panel" type="PanelContainer" parent="."]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 992.0
-margin_bottom = 144.0
-size_flags_horizontal = 5
+margin_left = 450.0
+margin_top = 450.0
+margin_right = 564.0
+margin_bottom = 562.0
+size_flags_horizontal = 0
 size_flags_vertical = 0
+size_flags_stretch_ratio = 2.47
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 953.0
+margin_right = 107.0
 margin_bottom = 105.0
+size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="play" type="Button" parent="Panel/VBoxContainer"]
-margin_right = 946.0
+margin_right = 100.0
 margin_bottom = 47.0
 text = "PLAY"
 
 [node name="exit" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 51.0
-margin_right = 946.0
+margin_right = 100.0
 margin_bottom = 98.0
 text = "EXIT"
