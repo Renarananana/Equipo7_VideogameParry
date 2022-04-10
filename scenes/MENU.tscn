@@ -11,16 +11,16 @@ theme = ExtResource( 1 )
 script = ExtResource( 3 )
 
 [node name="fondo" type="Sprite" parent="."]
-position = Vector2( 790.336, 405.632 )
-scale = Vector2( 3.17066, 1.60147 )
+position = Vector2( 505.667, 300.316 )
+scale = Vector2( 2.07333, 1.22274 )
 texture = ExtResource( 2 )
 
 [node name="Panel" type="PanelContainer" parent="."]
-margin_left = 450.0
-margin_top = 450.0
-margin_right = 564.0
-margin_bottom = 562.0
-size_flags_horizontal = 0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 146.0
+margin_bottom = 144.0
+size_flags_horizontal = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 2.47
 
@@ -29,7 +29,6 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 107.0
 margin_bottom = 105.0
-size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="play" type="Button" parent="Panel/VBoxContainer"]

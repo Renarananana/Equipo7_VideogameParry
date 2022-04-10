@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Player_spritesheet.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://animations/walk_left.tres" type="Animation" id=9]
 [ext_resource path="res://animations/walk_right.tres" type="Animation" id=10]
 [ext_resource path="res://sprites/icon.png" type="Texture" id=11]
+[ext_resource path="res://scenes/Bala.tscn" type="PackedScene" id=12]
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Idle"
@@ -111,11 +112,8 @@ extents = Vector2( 16, 16 )
 extents = Vector2( 6, 7.5 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
-position = Vector2( 239, 238 )
+position = Vector2( 223, 260 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 3 )
@@ -162,3 +160,6 @@ shape = SubResource( 87 )
 position = Vector2( 0, 0.5 )
 scale = Vector2( 5, 5 )
 shape = SubResource( 1 )
+
+[node name="Bala" parent="." instance=ExtResource( 12 )]
+position = Vector2( -303, -44 )
