@@ -11,7 +11,7 @@ func _ready():
 	exit.connect("pressed",self,"_on_exit_pressed")
 
 func _on_play_pressed():
-	get_tree().change_scene("res://scenes/Player.tscn")
+	get_tree().change_scene("res://scenes/Main.tscn")
 	
 
 func _on_exit_pressed():  #esta func no recibe argumento 

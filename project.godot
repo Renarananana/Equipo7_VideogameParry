@@ -11,8 +11,13 @@ config_version=4
 [application]
 
 config/name="Equipo7"
-run/main_scene="res://scenes/Player.tscn"
+run/main_scene="res://scenes/Menu.tscn"
 config/icon="res://sprites/icon.png"
+
+[global]
+
+scene=false
+main=false
 
 [importer_defaults]
 

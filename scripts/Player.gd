@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
-var SPEED = 200
-var ACCELERATION = 100
+export var SPEED = 200
+export var ACCELERATION = 100
 var velocity = Vector2()
+export var HEALTH = 100
+
 onready var animTree = $AnimationTree
 onready var animPlayer = $AnimationPlayer
 onready var playback = animTree.get("parameters/playback")
@@ -31,4 +33,14 @@ func _physics_process(delta):
 		playback.travel("Idle")
 	
 	animTree.set("parameters/walk/blend_position", direction)
+
+func take_damage(damage):
+	print(damage)
+	HEALTH -= damage
+	is_dead()
+	
+func is_dead():
+	if HEALTH <= 0:
+		queue_free()
+		
 
