@@ -6,9 +6,13 @@ var velocity = Vector2()
 onready var animTree = $AnimationTree
 onready var animPlayer = $AnimationPlayer
 onready var playback = animTree.get("parameters/playback")
+onready var parry =$Parry
 
 var direction = Vector2.DOWN
 
+func _unhandled_input(event):
+	if event.is_action_pressed("parry"):
+		parry.attack()
 
 func _physics_process(delta):
 	
