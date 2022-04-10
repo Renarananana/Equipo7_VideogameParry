@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Player_spritesheet.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://animations/walk_left.tres" type="Animation" id=9]
 [ext_resource path="res://animations/walk_right.tres" type="Animation" id=10]
 [ext_resource path="res://sprites/icon.png" type="Texture" id=11]
+[ext_resource path="res://scenes/Parry.gd" type="Script" id=12]
 
 [sub_resource type="AnimationNodeAnimation" id=6]
 animation = "Idle"
@@ -105,13 +106,92 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=87]
-extents = Vector2( 16, 16 )
+extents = Vector2( 54.6666, 30.5 )
+
+[sub_resource type="Animation" id=99]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Icon:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=100]
+resource_name = "parry"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 20, 20 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Icon:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 7.5 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
-position = Vector2( 239, 238 )
+position = Vector2( 276, 275 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -143,20 +223,27 @@ anims/walk_frontright = ExtResource( 7 )
 anims/walk_left = ExtResource( 9 )
 anims/walk_right = ExtResource( 10 )
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Parry" type="Node2D" parent="."]
+script = ExtResource( 12 )
 
-[node name="Area2D" type="Area2D" parent="Node2D"]
-position = Vector2( 2, 59 )
+[node name="Area2D" type="Area2D" parent="Parry"]
+position = Vector2( 40, 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Icon" type="Sprite" parent="Node2D/Area2D"]
-scale = Vector2( 0.5, 0.5 )
+[node name="Icon" type="Sprite" parent="Parry/Area2D"]
+scale = Vector2( 0.3, 1 )
 texture = ExtResource( 11 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parry/Area2D"]
+position = Vector2( 34.6, -0.5 )
+scale = Vector2( 0.3, 1 )
 shape = SubResource( 87 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Parry/Area2D"]
+anims/RESET = SubResource( 99 )
+anims/parry = SubResource( 100 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.5 )
