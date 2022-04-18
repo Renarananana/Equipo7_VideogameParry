@@ -25,8 +25,8 @@ func _physics_process(delta):
 	if move_input.length() != 0:
 		direction = move_input
 	
-	velocity = velocity.move_toward(move_input * SPEED, ACCELERATION)
 	
+	velocity = velocity.move_toward(move_input * SPEED, ACCELERATION)
 	if velocity.length() > 10:
 		playback.travel("walk")
 	else:
