@@ -229,7 +229,7 @@ scale = Vector2( 0.3, 1 )
 texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maletin"]
-position = Vector2( 42, 0 )
+position = Vector2( 10, -1 )
 scale = Vector2( 2, 0.8 )
 shape = SubResource( 87 )
 
