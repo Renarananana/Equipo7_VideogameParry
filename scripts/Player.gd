@@ -9,6 +9,7 @@ onready var animTree = $AnimationTree
 onready var animPlayer = $AnimationPlayer
 onready var playback = animTree.get("parameters/playback")
 onready var maletin = $Maletin
+onready var puntero = $Puntero
 
 var direction = Vector2.DOWN
 
@@ -22,8 +23,30 @@ func _physics_process(delta):
 	
 	var move_input = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 	
+	
 	if move_input.length() != 0:
 		direction = move_input
+		if direction.x == 1 and direction.y == -1:
+			maletin.rotation_degrees = -45
+		elif direction.x == 0 and direction.y == -1:
+			maletin.rotation_degrees = -90
+	
+		elif direction.x == -1 and direction.y == -1:
+			maletin.rotation_degrees = -135
+		elif direction.x == -1 and direction.y == 0:
+			print("180")
+			maletin.rotation_degrees = -180
+	
+		elif direction.x == -1 and direction.y == 1:
+			maletin.rotation_degrees = -225
+		elif direction.x == 0 and direction.y == 1:
+			print("-270")
+			maletin.rotation_degrees = -270
+		
+		elif direction.x == 1 and direction.y == 1:
+			maletin.rotation_degrees = -315
+		elif direction.x == 1 and direction.y == 0:
+			maletin.rotation_degrees = 0
 	
 	
 	velocity = velocity.move_toward(move_input * SPEED, ACCELERATION)
