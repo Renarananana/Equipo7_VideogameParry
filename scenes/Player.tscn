@@ -10,7 +10,7 @@
 [ext_resource path="res://animations/walk_back.tres" type="Animation" id=8]
 [ext_resource path="res://animations/walk_left.tres" type="Animation" id=9]
 [ext_resource path="res://animations/walk_right.tres" type="Animation" id=10]
-[ext_resource path="res://sprites/icon.png" type="Texture" id=11]
+[ext_resource path="res://sprites/maleitn-1.png.png" type="Texture" id=11]
 [ext_resource path="res://scripts/Parry.gd" type="Script" id=13]
 
 [sub_resource type="AnimationNodeAnimation" id=102]
@@ -258,11 +258,12 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=87]
-extents = Vector2( 10.9679, 38.2718 )
+extents = Vector2( 13.3109, 17.0563 )
 
 [sub_resource type="Animation" id=99]
 resource_name = "Parry"
 length = 0.4
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Icon:rotation_degrees")
 tracks/0/interp = 1
@@ -270,10 +271,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.05, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 90.0, 0.0 ]
+"values": [ -62.6, 0.0, 50.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollisionShape2D:disabled")
@@ -282,7 +283,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1, 0.4 ),
+"times": PoolRealArray( 0.05, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -306,10 +307,34 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4 ),
+"times": PoolRealArray( 0, 0.05, 0.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 35, 0 ), Vector2( 61, 18 ), Vector2( 35, 0 ) ]
+"values": [ Vector2( 45, -30 ), Vector2( 55, 0 ), Vector2( 45, 30 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 42.9504, -30.3337 ), Vector2( 55, 0 ), Vector2( 48, 28 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -62.6, 0.0, 50.0 ]
 }
 
 [sub_resource type="Animation" id=100]
@@ -374,6 +399,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 42.9504, -30.3337 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CollisionShape2D:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -62.6 ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.5, 7.5 )
@@ -387,7 +436,7 @@ tree_root = SubResource( 3 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 4 )
-parameters/Idle/blend_position = Vector2( 0.000946999, -0.910405 )
+parameters/Idle/blend_position = Vector2( 0.0304598, 0.0722544 )
 parameters/walk/blend_position = Vector2( -0.125862, 0.203125 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -418,15 +467,17 @@ anims/walk_right = ExtResource( 10 )
 
 [node name="Maletin" type="Area2D" parent="."]
 rotation = -3.14159
+collision_mask = 15
 script = ExtResource( 13 )
 
 [node name="Icon" type="Sprite" parent="Maletin"]
 visible = false
-scale = Vector2( 0.3, 1 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Maletin"]
-position = Vector2( 48, 0 )
+position = Vector2( 42.9504, -30.3337 )
+rotation = -1.09258
 scale = Vector2( 2, 0.8 )
 shape = SubResource( 87 )
 

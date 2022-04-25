@@ -1,6 +1,6 @@
 extends Area2D
 
-var SPEED=10
+var SPEED=5
 export var DAMAGE = 10
 var look_vec = Vector2.ZERO
 var move = Vector2.ZERO
