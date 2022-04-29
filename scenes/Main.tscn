@@ -8,6 +8,7 @@ position = Vector2( 1, 4 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 367, 289 )
+HEALTH = 10000
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 706, 241 )
