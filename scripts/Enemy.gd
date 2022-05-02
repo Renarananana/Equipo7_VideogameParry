@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var health = 100
 var player = null
 var move = Vector2.ZERO
-var SPEED = 100
+var SPEED = 200
 onready var bala = preload("res://scenes/Bala.tscn")
 var look_vec = Vector2.ZERO
 var look_vec2 = Vector2.ZERO
