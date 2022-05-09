@@ -1,19 +1,22 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Bala.gd" type="Script" id=1]
-[ext_resource path="res://sprites/icon.png" type="Texture" id=2]
+[ext_resource path="res://sprites/All_Fire_Bullet_Pixel_16x16.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.5, 5 )
+extents = Vector2( 5, 6.5 )
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource( 1 )
 
-[node name="Icon" type="Sprite" parent="."]
-position = Vector2( -0.5, 9.53674e-07 )
-scale = Vector2( 0.171875, 0.15625 )
+[node name="AllFireBulletPixel16X16" type="Sprite" parent="."]
+position = Vector2( 0, -2 )
+scale = Vector2( 1.8, 1.41 )
 texture = ExtResource( 2 )
+hframes = 37
+vframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.5, 0 )
+position = Vector2( 1, 0.5 )
+scale = Vector2( 3, 3 )
 shape = SubResource( 1 )

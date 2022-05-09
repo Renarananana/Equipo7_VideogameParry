@@ -11,7 +11,6 @@ var look_vec3 = Vector2.ZERO
 var random = RandomNumberGenerator.new()
 var c = 0
 
-
 func _ready():
 	random.randomize()
 
