@@ -33,7 +33,7 @@ func fire():
 	var Bala = bala.instance()
 	look_vec = player.position - global_position
 	look_vec = look_vec.normalized()
-	Bala.position = get_global_position() + look_vec * 50
+	Bala.position = get_global_position() + look_vec * 70
 	Bala.rotation = look_vec.angle()
 	Bala.player = player
 	get_parent().add_child(Bala)
@@ -46,7 +46,7 @@ func fire_machinegun():
 	
 	look_vec = player.position - global_position
 	look_vec = look_vec.normalized()
-	Bala.position = get_global_position() + look_vec * 50
+	Bala.position = get_global_position() + look_vec * 70
 	Bala.rotation = look_vec.angle() + random.randf_range(-PI/18 , PI/18)
 	Bala.player = player
 	get_parent().add_child(Bala)
@@ -67,18 +67,18 @@ func fire_shotgun():
 	look_vec = player.position - global_position
 	look_vec = look_vec.normalized()
 	
-	Bala1.position = get_global_position() + look_vec * 50
+	Bala1.position = get_global_position() + look_vec * 70
 	Bala1.player = player
 	Bala1.rotation = look_vec.angle()
 	get_parent().add_child(Bala1)
 	
-	Bala2.position = get_global_position() + look_vec * 50
+	Bala2.position = get_global_position() + look_vec * 70
 	Bala2.rotation = look_vec.angle() + PI/6
 	Bala2.player = player
 	
 	get_parent().add_child(Bala2)
 	
-	Bala3.position = get_global_position() + look_vec * 50
+	Bala3.position = get_global_position() + look_vec * 70
 	Bala3.player = player
 	
 	Bala3.rotation = look_vec.angle() - PI/6

@@ -11,21 +11,43 @@ onready var playback = animTree.get("parameters/playback")
 onready var maletin = $Maletin
 
 var direction = Vector2.DOWN
+var dash_ready = false
 
 func _unhandled_input(event):
 	if event.is_action_pressed("parry"):
 		maletin.parry()
 		
+		
+
+func dash(direction):
+	velocity = move_and_slide(velocity * 5)
+	dash_ready = false
+	
+
+	
+		
 func _physics_process(delta):
+	
+	
 	
 	velocity = move_and_slide(velocity)
 	
 	var move_input = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
+	var corriendo = Input.is_action_pressed("dashCorrer")
 	
+	if Input.is_action_just_pressed("dashCorrer"):
+		SPEED = 300
+		if dash_ready:
+			dash(direction)
+			$Timer.set_wait_time(5)
+		
+	if Input.is_action_just_released("dashCorrer"):
+		SPEED = 200
 	
 	
 	if move_input.length() != 0:
 		direction = move_input
+		
 		if direction.x == 1 and direction.y == -1:
 			maletin.rotation_degrees = -45
 		elif direction.x == 0 and direction.y == -1:
@@ -66,3 +88,7 @@ func is_dead():
 		queue_free()
 		
 
+
+
+func _on_Timer_timeout():
+	dash_ready = true
