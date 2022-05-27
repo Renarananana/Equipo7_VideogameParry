@@ -20,22 +20,17 @@ func _ready():
 	random.randomize()
 
 func _physics_process(delta):
-	 move = Vector2.ZERO
-	
-	 if player != null:
-	   move = position.direction_to(player.position ) * SPEED
-	 move=move.normalized()
-	 move = move_and_collide(move)
-	 
-	
-#	 if move.x>50 and move.y>50 : 
-#		  playback.travel("EnemyRun")
-#	 elif abs(move.x)>10 and abs(move.x)<50 and abs(move.y)>10 and abs(move.y)<50  : 
-#		   playback.travel("EnemyWalk")
-#	 else: 
-#		 playback.travel("Enemyidle")
-#
-	
+	if player != null:
+		move = position.direction_to(player.position ) * SPEED
+	else:
+		move = Vector2.ZERO
+	if move.length() > 10 : 
+		playback.travel("run")
+	else: 
+		playback.travel("idle")
+		
+	move = move.normalized()
+	move_and_collide(move)
 	
 	
 
