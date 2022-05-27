@@ -10,18 +10,34 @@ var look_vec2 = Vector2.ZERO
 var look_vec3 = Vector2.ZERO
 var random = RandomNumberGenerator.new()
 var c = 0
+onready var animTree = $AnimationTree
+onready var animPlayer = $AnimationPlayer
+onready var playback = animTree.get("parameters/playback")
 
 func _ready():
+	animTree.active=true
+	
 	random.randomize()
 
 func _physics_process(delta):
-	move = Vector2.ZERO
+	 move = Vector2.ZERO
 	
-	if player != null:
-		move = position.direction_to(player.position ) * SPEED
+	 if player != null:
+	   move = position.direction_to(player.position ) * SPEED
+	 move=move.normalized()
+	 move = move_and_collide(move)
+	 
 	
-	move = move.normalized()
-	move = move_and_collide(move)
+#	 if move.x>50 and move.y>50 : 
+#		  playback.travel("EnemyRun")
+#	 elif abs(move.x)>10 and abs(move.x)<50 and abs(move.y)>10 and abs(move.y)<50  : 
+#		   playback.travel("EnemyWalk")
+#	 else: 
+#		 playback.travel("Enemyidle")
+#
+	
+	
+	
 
 func take_damage(damage):
 	health -= damage
