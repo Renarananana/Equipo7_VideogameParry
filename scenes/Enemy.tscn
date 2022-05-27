@@ -4,27 +4,15 @@
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://sprites/Idle.png" type="Texture" id=3]
 [ext_resource path="res://sprites/Walk.png" type="Texture" id=4]
+[ext_resource path="res://animations/Enemyidle.tres" type="Animation" id=5]
+[ext_resource path="res://animations/EnemyWalk.tres" type="Animation" id=6]
+[ext_resource path="res://animations/EnemyRun.tres" type="Animation" id=7]
+[ext_resource path="res://animations/EnemyAttack.tres" type="Animation" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 52.5, 70.25 )
 
 [sub_resource type="CircleShape2D" id=2]
-
-[sub_resource type="Animation" id=3]
-resource_name = "AttackEnemy"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Attack:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3, 4, 5, 6, 7 ]
-}
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -63,54 +51,6 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Idle:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3, 0, 1, 2, 0, 1, 2 ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "run"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Walk:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3, 4, 0, 1, 2, 3, 4 ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "walk"
-length = 1.2
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Walk:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3, 4, 0, 1, 2, 3, 4 ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=8]
@@ -187,11 +127,11 @@ hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.5
-anims/AttackEnemy = SubResource( 3 )
+anims/AttackEnemy = ExtResource( 8 )
 anims/RESET = SubResource( 4 )
-anims/idle = SubResource( 5 )
-anims/run = SubResource( 6 )
-anims/walk = SubResource( 7 )
+anims/idle = ExtResource( 5 )
+anims/run = ExtResource( 7 )
+anims/walk = ExtResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
 tree_root = SubResource( 18 )
