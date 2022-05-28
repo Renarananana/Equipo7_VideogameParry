@@ -88,7 +88,12 @@ func is_dead():
 		queue_free()
 		
 
-
+#Funcion para ganar vida
+func gain_health(health):
+	print("vida anterior:",HEALTH)
+	HEALTH+=health
+	print("vida nueva:", HEALTH)
+	
 
 func _on_Timer_timeout():
 	dash_ready = true
