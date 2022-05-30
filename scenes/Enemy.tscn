@@ -10,7 +10,7 @@
 [ext_resource path="res://animations/EnemyAttack.tres" type="Animation" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 52.5, 70.25 )
+extents = Vector2( 30.5, 58 )
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -101,33 +101,39 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource( 2 )
 
-[node name="Walk" type="Sprite" parent="."]
-position = Vector2( 60, 20 )
-scale = Vector2( 4.125, 3.5625 )
-texture = ExtResource( 4 )
-hframes = 6
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 25.5, 27.75 )
+position = Vector2( 0, -5 )
 shape = SubResource( 1 )
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 13, 1 )
 scale = Vector2( 50, 50 )
 shape = SubResource( 2 )
 
-[node name="Idle" type="Sprite" parent="."]
+[node name="Walk" type="Sprite" parent="."]
 visible = false
-position = Vector2( 65, 12.5 )
-scale = Vector2( 4.125, 3.5625 )
+position = Vector2( 30, -20 )
+scale = Vector2( 3.2, 3.2 )
+texture = ExtResource( 4 )
+hframes = 6
+
+[node name="Idle" type="Sprite" parent="."]
+position = Vector2( 30, -20 )
+scale = Vector2( 3.2, 3.2 )
 texture = ExtResource( 3 )
 hframes = 4
+
+[node name="Attack" type="Sprite" parent="."]
+visible = false
+position = Vector2( 30, -20 )
+scale = Vector2( 3.2, 3.2 )
+texture = ExtResource( 1 )
+hframes = 9
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 1.5
@@ -137,18 +143,11 @@ anims/idle = ExtResource( 5 )
 anims/run = ExtResource( 7 )
 anims/walk = ExtResource( 6 )
 
-[node name="Attack" type="Sprite" parent="."]
-visible = false
-position = Vector2( 40.5, 5.99999 )
-scale = Vector2( 4.39583, 3.79167 )
-texture = ExtResource( 1 )
-hframes = 9
-
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 18 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 19 )
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

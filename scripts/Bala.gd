@@ -17,7 +17,8 @@ func _on_body_entered(body):
 	if body.has_method("take_damage"):
 		body.take_damage(DAMAGE)
 		queue_free()
-	
+
+
 func _physics_process(delta):
 
 	position+=SPEED*transform.x*delta
