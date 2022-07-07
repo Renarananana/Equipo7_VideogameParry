@@ -8,6 +8,7 @@
 [ext_resource path="res://animations/EnemyWalk.tres" type="Animation" id=6]
 [ext_resource path="res://animations/EnemyRun.tres" type="Animation" id=7]
 [ext_resource path="res://animations/EnemyAttack.tres" type="Animation" id=8]
+[ext_resource path="res://sprites/hud_vida.tres" type="Theme" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.5, 58 )
@@ -62,24 +63,19 @@ animation = "idle"
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "run"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
-animation = "walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=14]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id=18]
 states/AttackEnemy/node = SubResource( 8 )
@@ -88,12 +84,26 @@ states/idle/node = SubResource( 9 )
 states/idle/position = Vector2( 230, 73 )
 states/run/node = SubResource( 10 )
 states/run/position = Vector2( 391, 150 )
-states/walk/node = SubResource( 11 )
-states/walk/position = Vector2( 441, 54 )
-transitions = [ "idle", "walk", SubResource( 12 ), "walk", "idle", SubResource( 13 ), "walk", "AttackEnemy", SubResource( 14 ), "AttackEnemy", "walk", SubResource( 15 ), "run", "walk", SubResource( 16 ), "walk", "run", SubResource( 17 ), "idle", "run", SubResource( 20 ), "run", "idle", SubResource( 21 ) ]
+transitions = [ "idle", "run", SubResource( 20 ), "run", "idle", SubResource( 21 ), "idle", "AttackEnemy", SubResource( 22 ), "run", "AttackEnemy", SubResource( 24 ), "AttackEnemy", "idle", SubResource( 25 ), "AttackEnemy", "run", SubResource( 26 ) ]
 start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=19]
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.556863, 0.0666667, 0.0666667, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="StyleBoxFlat" id=28]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.133333, 0.00784314, 0.00784314, 1 )
 
 [node name="Enemy" type="KinematicBody2D"]
 position = Vector2( -2, 1 )
@@ -147,6 +157,17 @@ anims/walk = ExtResource( 6 )
 tree_root = SubResource( 18 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 19 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -47.0
+margin_top = -105.0
+margin_right = 50.0
+margin_bottom = -91.0
+theme = ExtResource( 9 )
+custom_styles/fg = SubResource( 27 )
+custom_styles/bg = SubResource( 28 )
+value = 100.0
+percent_visible = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

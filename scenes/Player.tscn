@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Player_spritesheet.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://animations/walk_left.tres" type="Animation" id=9]
 [ext_resource path="res://animations/walk_right.tres" type="Animation" id=10]
 [ext_resource path="res://sprites/maleitn-1.png.png" type="Texture" id=11]
+[ext_resource path="res://sprites/hud_vida.tres" type="Theme" id=12]
 [ext_resource path="res://scripts/Parry.gd" type="Script" id=13]
 
 [sub_resource type="AnimationNodeAnimation" id=102]
@@ -427,9 +428,14 @@ tracks/6/keys = {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.5, 7.5 )
 
+[sub_resource type="StyleBoxFlat" id=119]
+bg_color = Color( 0.494118, 0.827451, 0.772549, 1 )
+
+[sub_resource type="StyleBoxFlat" id=120]
+
 [node name="KinematicBody2D" type="KinematicBody2D"]
 position = Vector2( 581, 160 )
-collision_layer = 9
+collision_layer = 32777
 script = ExtResource( 1 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -491,6 +497,24 @@ scale = Vector2( 4.93229, 5.01509 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
+wait_time = 3.0
+one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -33.0
+margin_top = -62.0
+margin_right = 37.0
+margin_bottom = -48.0
+theme = ExtResource( 12 )
+custom_styles/fg = SubResource( 119 )
+custom_styles/bg = SubResource( 120 )
+max_value = 3.0
+value = 3.0
+percent_visible = false
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var health = 100
+export var health = 50
 var player = null
 var move = Vector2.ZERO
 var SPEED = 200
@@ -13,6 +13,7 @@ var c = 0
 onready var animTree = $AnimationTree
 onready var animPlayer = $AnimationPlayer
 onready var playback = animTree.get("parameters/playback")
+onready var health_bar = $ProgressBar
 
 func _ready():
 	animTree.active=true
@@ -24,14 +25,17 @@ func _physics_process(delta):
 		move = position.direction_to(player.position ) * SPEED
 	else:
 		move = Vector2.ZERO
+		
 	if move.length() > 10 : 
 		playback.travel("run")
 		$Idle.visible = false
 		$Walk.visible = true
+		$Attack.visible = false
 	else: 
 		playback.travel("idle")
 		$Idle.visible = true
 		$Walk.visible = false
+		$Attack.visible = false
 		
 	move = move.normalized()
 	move_and_collide(move)
@@ -40,11 +44,19 @@ func _physics_process(delta):
 
 func take_damage(damage):
 	health -= damage
+	health_bar.value = health * 100 / 50
 	is_dead()
 	
 	
 func fire():
 	var Bala = bala.instance()
+	#playback.travel("AttackEnemy")
+	#$Idle.visible = false
+	#$Attack.visible = true
+	#$Walk.visible = false
+	
+	
+	
 	look_vec = player.position - global_position
 	look_vec = look_vec.normalized()
 	Bala.position = get_global_position() + look_vec * 90
@@ -53,52 +65,7 @@ func fire():
 	get_parent().add_child(Bala)
 	$Timer.set_wait_time(1)
 	
-	
-func fire_machinegun():
-	var Bala = bala.instance()
-	
-	
-	look_vec = player.position - global_position
-	look_vec = look_vec.normalized()
-	Bala.position = get_global_position() + look_vec * 90
-	Bala.rotation = look_vec.angle() + random.randf_range(-PI/18 , PI/18)
-	Bala.player = player
-	get_parent().add_child(Bala)
-	if c == 10:
-		c = 0
-		$Timer.set_wait_time(3)
-	else:
-		c += 1
-		$Timer.set_wait_time(.1)
-	
-	
 
-func fire_shotgun():
-	var Bala1 = bala.instance()
-	var Bala2 = bala.instance()
-	var Bala3 = bala.instance()
-	
-	look_vec = player.position - global_position
-	look_vec = look_vec.normalized()
-	
-	Bala1.position = get_global_position() + look_vec * 90
-	Bala1.player = player
-	Bala1.rotation = look_vec.angle()
-	get_parent().add_child(Bala1)
-	
-	Bala2.position = get_global_position() + look_vec * 90
-	Bala2.rotation = look_vec.angle() + PI/6
-	Bala2.player = player
-	
-	get_parent().add_child(Bala2)
-	
-	Bala3.position = get_global_position() + look_vec * 90
-	Bala3.player = player
-	
-	Bala3.rotation = look_vec.angle() - PI/6
-	get_parent().add_child(Bala3)
-	
-	$Timer.set_wait_time(1)
 	
 
 func is_dead():
