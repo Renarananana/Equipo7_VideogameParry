@@ -7,6 +7,8 @@ func fire_shotgun():
 	var Bala2 = bala.instance()
 	var Bala3 = bala.instance()
 	
+	playback.travel("AttackEnemy")
+	
 	look_vec = player.position - global_position
 	look_vec = look_vec.normalized()
 	

@@ -68,15 +68,15 @@ func _physics_process(delta):
 			maletin.rotation_degrees = 0
 	
 	if dash:
-		velocity = velocity.move_toward(move_input.normalized() * SPEED *2.5, ACCELERATION)
+		velocity = velocity.move_toward(direction.normalized() * SPEED *2.5, ACCELERATION)
 	else:	
 		velocity = velocity.move_toward(move_input.normalized() * SPEED , ACCELERATION)
 	if velocity.length() > 10:
 		playback.travel("walk")
-		animTree.set("parameters/Idle/blend_position", direction)
-		animTree.set("parameters/walk/blend_position", direction)
+		animTree.set("parameters/walk/blend_position", move_input.normalized())
 	else:
 		playback.travel("Idle")
+		animTree.set("parameters/Idle/blend_position", direction.normalized())
 		
 
 func take_damage(damage):

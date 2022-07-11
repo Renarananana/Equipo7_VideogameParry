@@ -8,17 +8,8 @@
 [node name="Enemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Walk" parent="." index="2"]
-modulate = Color( 0.431373, 0.933333, 0.341176, 1 )
-
-[node name="Idle" parent="." index="3"]
-modulate = Color( 0.431373, 0.933333, 0.341176, 1 )
-
-[node name="Attack" parent="." index="4"]
-modulate = Color( 0.431373, 0.933333, 0.341176, 1 )
-
-[node name="Timer" parent="." index="5"]
-autostart = true
-
-[node name="AnimationTree" parent="." index="7"]
+[node name="AnimationTree" parent="." index="4"]
 parameters/playback = SubResource( 1 )
+
+[node name="AnimatedSprite" parent="." index="6"]
+modulate = Color( 0.823529, 0.219608, 0.219608, 1 )

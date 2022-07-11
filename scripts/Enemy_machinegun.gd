@@ -4,6 +4,8 @@ extends "res://scripts/Enemy.gd"
 func fire_machinegun():
 	var Bala = bala.instance()
 	
+	playback.travel("AttackEnemy")
+	
 	
 	look_vec = player.position - global_position
 	look_vec = look_vec.normalized()
@@ -16,7 +18,7 @@ func fire_machinegun():
 		$Timer.set_wait_time(5)
 	else:
 		c += 1
-		$Timer.set_wait_time(.1)
+		$Timer.set_wait_time(0.1)
 
 func _on_Timer_timeout():
 	if player != null:
