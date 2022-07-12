@@ -9,8 +9,9 @@ var look_vec = Vector2.ZERO
 var look_vec2 = Vector2.ZERO
 var look_vec3 = Vector2.ZERO
 var random = RandomNumberGenerator.new()
-var c = 0
 var dead = false
+export var attacking = false
+var objective = null
 onready var animTree = $AnimationTree
 onready var animPlayer = $AnimationPlayer
 onready var playback = animTree.get("parameters/playback")
@@ -18,16 +19,18 @@ onready var health_bar = $ProgressBar
 
 func _ready():
 	animTree.active=true
+	$Timer.start()
 	
 	random.randomize()
 
+
 func _physics_process(delta):
-	if player != null and not dead:
+	if player != null and not dead and not attacking:
 		move = position.direction_to(player.position ) * SPEED
 	else:
 		move = Vector2.ZERO
 	
-	if not dead:
+	if not dead and not attacking:
 		if move.length() > 10: 
 			playback.travel("run")
 		#	$Idle.visible = false
@@ -54,20 +57,14 @@ func take_damage(damage):
 	
 func fire():
 	var Bala = bala.instance()
-	playback.travel("AttackEnemy")
-	#$Idle.visible = false
-	#$Attack.visible = true
-	#$Walk.visible = false
 	
-	
-	
-	look_vec = player.position - global_position
+	look_vec = objective.position - global_position
 	look_vec = look_vec.normalized()
 	Bala.position = get_global_position() + look_vec * 90
 	Bala.rotation = look_vec.angle()
-	Bala.player = player
+	Bala.player = objective
 	get_parent().add_child(Bala)
-	$Timer.set_wait_time(1)
+	
 	
 	
 
@@ -79,7 +76,9 @@ func _on_Area2D_body_entered(body):
 
 func _on_Timer_timeout():
 	if player != null and not dead:
-		fire()
+		$Timer.set_wait_time(3)
+		objective = player
+		playback.travel("AttackEnemy")
 		
 	
 

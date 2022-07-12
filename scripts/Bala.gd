@@ -5,6 +5,7 @@ export var DAMAGE = 10
 var look_vec = Vector2.ZERO
 var move = Vector2.ZERO
 var player = null
+onready var pivot = $pivot
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
@@ -12,6 +13,7 @@ func _ready():
 
 func devolver():
 	SPEED = -SPEED
+	pivot.rotation_degrees = 180
 	
 func _on_body_entered(body):
 	if body.has_method("take_damage"):
