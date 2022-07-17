@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Enemy_shotgun.gd" type="Script" id=2]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[node name="Enemy" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="AnimationTree" parent="." index="4"]
+parameters/playback = SubResource( 1 )
+
+[node name="AnimatedSprite" parent="." index="6"]
+modulate = Color( 0.823529, 0.219608, 0.219608, 1 )

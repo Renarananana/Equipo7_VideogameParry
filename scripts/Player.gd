@@ -5,29 +5,24 @@ export var ACCELERATION = 100
 var velocity = Vector2()
 export var HEALTH = 100
 
+
 onready var animTree = $AnimationTree
 onready var animPlayer = $AnimationPlayer
 onready var playback = animTree.get("parameters/playback")
 onready var maletin = $Maletin
+onready var tiempo_dash = $ProgressBar
 
 var direction = Vector2.DOWN
-var dash_ready = false
+var dash = false
+var dash_ready = true
 
 func _unhandled_input(event):
 	if event.is_action_pressed("parry"):
 		maletin.parry()
 		
 		
-
-func dash(direction):
-	velocity = move_and_slide(velocity * 5)
-	dash_ready = false
-	
-
-	
 		
 func _physics_process(delta):
-	
 	
 	
 	velocity = move_and_slide(velocity)
@@ -38,8 +33,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dashCorrer"):
 		SPEED = 300
 		if dash_ready:
-			dash(direction)
-			$Timer.set_wait_time(5)
+			dash = true
+			dash_ready = false
+			$Timer2.start()
+			tiempo_dash.value = 0
+	tiempo_dash.value = $Timer.wait_time - $Timer.time_left
+		
 		
 	if Input.is_action_just_released("dashCorrer"):
 		SPEED = 200
@@ -68,27 +67,40 @@ func _physics_process(delta):
 		elif direction.x == 1 and direction.y == 0:
 			maletin.rotation_degrees = 0
 	
-	
-	velocity = velocity.move_toward(move_input * SPEED, ACCELERATION)
+	if dash:
+		velocity = velocity.move_toward(direction.normalized() * SPEED *2.5, ACCELERATION)
+	else:	
+		velocity = velocity.move_toward(move_input.normalized() * SPEED , ACCELERATION)
 	if velocity.length() > 10:
 		playback.travel("walk")
-		animTree.set("parameters/Idle/blend_position", direction)
-		animTree.set("parameters/walk/blend_position", direction)
+		animTree.set("parameters/walk/blend_position", move_input.normalized())
 	else:
 		playback.travel("Idle")
+		animTree.set("parameters/Idle/blend_position", direction.normalized())
 		
 
 func take_damage(damage):
 	print(damage)
 	HEALTH -= damage
 	is_dead()
+
+#Funcion para ganar vida
+func gain_health(health):
+	print("vida anterior:",HEALTH)
+	HEALTH+=health
+	print("vida nueva:", HEALTH)
 	
+
 func is_dead():
 	if HEALTH <= 0:
 		queue_free()
 		
 
-
-
 func _on_Timer_timeout():
+	print("ready")
 	dash_ready = true
+
+
+func _on_Timer2_timeout():
+	dash = false
+	$Timer.start()
