@@ -493,6 +493,7 @@ anims/Parry = SubResource( 99 )
 anims/RESET = SubResource( 100 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 6, 2 )
 scale = Vector2( 4.93229, 5.01509 )
 shape = SubResource( 1 )
 
