@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://sprites/Attack.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=2]
@@ -81,14 +81,6 @@ animation = "walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
-
 [sub_resource type="AnimationNodeStateMachine" id=18]
 states/AttackEnemy/node = SubResource( 8 )
 states/AttackEnemy/position = Vector2( 700, 53 )
@@ -98,9 +90,8 @@ states/run/node = SubResource( 10 )
 states/run/position = Vector2( 391, 150 )
 states/walk/node = SubResource( 11 )
 states/walk/position = Vector2( 441, 54 )
-transitions = [ "idle", "walk", SubResource( 12 ), "walk", "idle", SubResource( 13 ), "walk", "AttackEnemy", SubResource( 14 ), "AttackEnemy", "walk", SubResource( 15 ), "run", "walk", SubResource( 16 ), "walk", "run", SubResource( 17 ), "idle", "run", SubResource( 20 ), "run", "idle", SubResource( 21 ), "run", "AttackEnemy", SubResource( 22 ), "AttackEnemy", "run", SubResource( 23 ), "idle", "AttackEnemy", SubResource( 24 ), "AttackEnemy", "idle", SubResource( 25 ) ]
+transitions = [ "idle", "walk", SubResource( 12 ), "walk", "idle", SubResource( 13 ), "walk", "AttackEnemy", SubResource( 14 ), "AttackEnemy", "walk", SubResource( 15 ), "run", "walk", SubResource( 16 ), "walk", "run", SubResource( 17 ), "idle", "run", SubResource( 20 ), "run", "idle", SubResource( 21 ) ]
 start_node = "idle"
-graph_offset = Vector2( 0, -41.82 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=19]
 
@@ -117,7 +108,6 @@ texture = ExtResource( 4 )
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 25.5, 27.75 )
 shape = SubResource( 1 )
 
