@@ -12,20 +12,17 @@ func fire():
 	look_vec = look_vec.normalized()
 	
 	Bala1.position = get_global_position() + look_vec * 90
-	Bala1.player = objective
 	Bala1.rotation = look_vec.angle()
 	get_parent().add_child(Bala1)
 	
 	Bala2.position = get_global_position() + look_vec * 90
 	Bala2.rotation = look_vec.angle() + PI/6
-	Bala2.player = objective
 	
 	get_parent().add_child(Bala2)
 	
 	Bala3.position = get_global_position() + look_vec * 90
-	Bala3.player = objective
-	
 	Bala3.rotation = look_vec.angle() - PI/6
+	
 	get_parent().add_child(Bala3)
 	
 	

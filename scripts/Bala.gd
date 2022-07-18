@@ -1,15 +1,11 @@
 extends Area2D
 
-var SPEED=300
+export var SPEED=300
 export var DAMAGE = 10
-var look_vec = Vector2.ZERO
-var move = Vector2.ZERO
-var player = null
 onready var pivot = $pivot
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
-	look_vec = player.position - global_position
 
 func devolver():
 	SPEED = -SPEED

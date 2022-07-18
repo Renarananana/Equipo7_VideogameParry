@@ -7,7 +7,6 @@ func spawn_bullet():
 	look_vec = look_vec.normalized()
 	Bala.position = get_global_position() + look_vec * 90
 	Bala.rotation = look_vec.angle() + random.randf_range(-PI/25 , PI/25)
-	Bala.player = objective
 	get_parent().add_child(Bala)
 	
 
