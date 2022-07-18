@@ -23,6 +23,10 @@ border_color = Color( 0.211765, 0.0117647, 0.0117647, 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 margin_left = 18.0
