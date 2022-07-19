@@ -17,6 +17,7 @@ func enemy_die():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	camara.current = true
+	$Area2D.next_scene = "boss_room"
 	$Player.connect("update_health_player",$Control,"update_health")
 
 

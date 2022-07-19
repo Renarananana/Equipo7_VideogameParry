@@ -1,6 +1,6 @@
 extends Area2D
 var lista = false
-
+export var next_scene = ""
 
 func start():
 	$AnimatedSprite.playing = true
@@ -14,4 +14,4 @@ func _ready():
 	
 func _on_body_entered(body):
 	if lista:	
-		get_tree().change_scene("res://scenes/boss_room.tscn")
+		get_tree().change_scene("res://scenes/" + next_scene+ ".tscn")
