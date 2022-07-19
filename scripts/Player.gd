@@ -91,12 +91,14 @@ func take_damage(damage):
 
 #Funcion para ganar vida
 func gain_health(health):
-	update_health(health)
+	if HEALTH < 100:
+		update_health(health)
 	
 
 func is_dead():
 	if HEALTH <= 0:
 		queue_free()
+		get_tree().change_scene("res://scenes/MENU.tscn")
 		
 
 func _on_Timer_timeout():
