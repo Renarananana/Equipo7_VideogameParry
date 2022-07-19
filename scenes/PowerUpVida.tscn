@@ -3,15 +3,15 @@
 [ext_resource path="res://sprites/pixel-heart-geb4863af4_640.png" type="Texture" id=1]
 [ext_resource path="res://scripts/PowerUpVida.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 28 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 29.1548
 
 [node name="Vida" type="Area2D"]
 collision_layer = 8
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 1 )
+position = Vector2( 0, -2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

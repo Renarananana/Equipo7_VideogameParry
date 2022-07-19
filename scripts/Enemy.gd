@@ -17,12 +17,14 @@ onready var animTree = $AnimationTree
 onready var animPlayer = $AnimationPlayer
 onready var playback = animTree.get("parameters/playback")
 onready var health_bar = $ProgressBar
+signal enemy_die
 
 func _ready():
 	animTree.active=true
 	$Timer.start()
 	
 	random.randomize()
+
 
 
 func _physics_process(delta):
@@ -58,6 +60,7 @@ func take_damage(damage):
 	health_bar.value = health * 100 / 50
 	if health <= 0:
 		dead = true
+		get_parent().enemy_die()
 		playback.travel("Death")
 	
 	
