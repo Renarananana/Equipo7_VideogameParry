@@ -5,6 +5,7 @@ var player = null
 var move = Vector2.ZERO
 var SPEED = 200
 onready var bala = preload("res://scenes/Bala.tscn")
+onready var corazon = preload("res://scenes/PowerUpVida.tscn")
 var look_vec = Vector2.ZERO
 var look_vec2 = Vector2.ZERO
 var look_vec3 = Vector2.ZERO
@@ -45,6 +46,11 @@ func _physics_process(delta):
 	move = move.normalized()
 	move_and_collide(move)
 	
+func drop_heart():
+	if random.randf_range(0 , 1) < .5:
+		var Corazon = corazon.instance()
+		Corazon.position = position
+		get_parent().add_child(Corazon)
 	
 
 func take_damage(damage):
