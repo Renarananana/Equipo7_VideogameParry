@@ -62,7 +62,6 @@ func fire():
 	look_vec = look_vec.normalized()
 	Bala.position = get_global_position() + look_vec * 90
 	Bala.rotation = look_vec.angle()
-	Bala.player = objective
 	get_parent().add_child(Bala)
 	
 	

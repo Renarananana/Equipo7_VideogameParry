@@ -4,6 +4,7 @@ export var SPEED = 200
 export var ACCELERATION = 100
 var velocity = Vector2()
 export var HEALTH = 100
+signal update_health_player
 
 
 onready var animTree = $AnimationTree
@@ -79,25 +80,28 @@ func _physics_process(delta):
 		animTree.set("parameters/Idle/blend_position", direction.normalized())
 		
 
+func update_health(valor):
+	HEALTH += valor
+	emit_signal("update_health_player", HEALTH)
+	
+
 func take_damage(damage):
-	print(damage)
-	HEALTH -= damage
+	update_health(-damage)
 	is_dead()
 
 #Funcion para ganar vida
 func gain_health(health):
-	print("vida anterior:",HEALTH)
-	HEALTH+=health
-	print("vida nueva:", HEALTH)
+	if HEALTH < 100:
+		update_health(health)
 	
 
 func is_dead():
 	if HEALTH <= 0:
 		queue_free()
+		get_tree().change_scene("res://scenes/MENU.tscn")
 		
 
 func _on_Timer_timeout():
-	print("ready")
 	dash_ready = true
 
 

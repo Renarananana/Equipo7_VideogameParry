@@ -1,0 +1,319 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://sprites/Necromancer_creativekind-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://scripts/boss.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.5, 20 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Attack"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawn_fire"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:attacking")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Dash"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 19, 23, 24 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.388235 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.27451 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "change_fase"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:attacking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1.8 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "die"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 103, 104, 105, 106, 107, 108, 109, 110 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "take_damage"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 86, 87, 88, 89 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:attacking")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Attack"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "change_fase"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "take_damage"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+switch_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=10]
+states/Attack/node = SubResource( 6 )
+states/Attack/position = Vector2( 513.667, 61.6667 )
+states/Idle/node = SubResource( 7 )
+states/Idle/position = Vector2( 256.334, 49.6666 )
+states/change_fase/node = SubResource( 14 )
+states/change_fase/position = Vector2( 273.667, 167 )
+states/die/node = SubResource( 18 )
+states/die/position = Vector2( 569.667, -47.6667 )
+states/take_damage/node = SubResource( 22 )
+states/take_damage/position = Vector2( 571.148, 186.202 )
+transitions = [ "Idle", "Attack", SubResource( 8 ), "Attack", "Idle", SubResource( 9 ), "Idle", "change_fase", SubResource( 15 ), "change_fase", "Idle", SubResource( 16 ), "Attack", "die", SubResource( 19 ), "Idle", "die", SubResource( 20 ), "Attack", "take_damage", SubResource( 23 ), "Idle", "take_damage", SubResource( 24 ), "take_damage", "change_fase", SubResource( 25 ), "take_damage", "Idle", SubResource( 26 ), "take_damage", "Attack", SubResource( 27 ) ]
+start_node = "Idle"
+graph_offset = Vector2( 0, 27.9613 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+
+[sub_resource type="RectangleShape2D" id=12]
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+scale = Vector2( 4, 4 )
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, 8 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+anims/Attack = SubResource( 4 )
+anims/Dash = SubResource( 5 )
+anims/Idle = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+anims/change_fase = SubResource( 13 )
+anims/die = SubResource( 17 )
+anims/take_damage = SubResource( 21 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 10 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 11 )
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 75, 75 )
+shape = SubResource( 12 )
+
+[node name="spawn" type="Node2D" parent="."]
+position = Vector2( 17, -35.25 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1, -18.8 )
+texture = ExtResource( 1 )
+hframes = 17
+vframes = 7
+frame = 89
+
+[node name="consecutive_attacks" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="consecutive_attacks" to="." method="_on_Timer_timeout"]
