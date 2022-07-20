@@ -1,13 +1,7 @@
 extends Node2D
 
-export var enemy_count = 3
+export var enemy_count = 4
 
-#onready var camara = $Camera2D
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 func enemy_die():
 	enemy_count -= 1
@@ -17,10 +11,11 @@ func enemy_die():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#camara.current = true
-	$Area2D.next_scene = "level2"
+	$Area2D.next_scene = "boss_room"
 	$Player.connect("update_health_player",$Control,"update_health")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+

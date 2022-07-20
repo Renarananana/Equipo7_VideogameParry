@@ -109,6 +109,3 @@ func _on_Timer_timeout():
 	attack()
 	
 
-
-func _on_Area2D_body_exited(body):
-	player = null
