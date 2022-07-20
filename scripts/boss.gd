@@ -95,6 +95,7 @@ func take_damage(damage):
 	health -= damage
 	if health <= 0:
 		attacking = true
+		get_parent().enemy_die()
 		playback.travel("die")
 		emit_signal("update_health_boss", health)
 		return
