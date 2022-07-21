@@ -30,7 +30,7 @@ func _ready():
 
 func _physics_process(delta):
 	if player != null and not dead and not attacking:
-		move = position.direction_to(player.position ) * SPEED
+		move = position.direction_to(player.position ) * SPEED * delta
 	else:
 		move = Vector2.ZERO
 	if move.x < 0:
@@ -41,12 +41,11 @@ func _physics_process(delta):
 		$AnimatedSprite.flip_h = false
 	
 	if not dead and not attacking:
-		if move.length() > 10: 
+		if move.length() > 1: 
 			playback.travel("walk")
 		else: 
 			playback.travel("Idle")
 		
-	move = move.normalized()
 	move_and_collide(move)
 	
 func drop_heart():
@@ -59,10 +58,10 @@ func drop_heart():
 func take_damage(damage):
 	health -= damage
 	health_bar.value = health * 100 / 50
-	if health <= 0:
+	if health <= 0 and not dead:
 		dead = true
 		get_parent().enemy_die()
-		playback.travel("Death")
+		playback.travel("die")
 	
 
 

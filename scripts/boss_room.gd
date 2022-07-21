@@ -5,6 +5,7 @@ onready var player = $Player
 onready var boss = $KinematicBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Area2D.next_scene = "Credits"
 	player.connect("update_health_player",$Control,"update_health")
 	boss.connect("update_health_boss",$ProgressBar,"update_health")
 
