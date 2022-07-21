@@ -23,7 +23,8 @@ animations = [ {
 radius = 11.7094
 
 [node name="Area2D" type="Area2D"]
-modulate = Color( 0.521569, 0.12549, 0.188235, 0.392157 )
+modulate = Color( 1, 1, 1, 0.392157 )
+scale = Vector2( 0.6, 0.6 )
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 2 )
@@ -34,10 +35,10 @@ script = ExtResource( 2 )
 position = Vector2( 1, 6 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 5.96046e-08, 1.19209e-07 )
 scale = Vector2( 2.5, 2.5 )
 shape = SubResource( 4 )

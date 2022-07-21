@@ -91,7 +91,9 @@ func take_damage(damage):
 
 #Funcion para ganar vida
 func gain_health(health):
-	if HEALTH < 100:
+	if HEALTH + health > 100:
+		update_health(100 - HEALTH)
+	else:
 		update_health(health)
 	
 

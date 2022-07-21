@@ -1,10 +1,11 @@
 extends KinematicBody2D
 
+
 export var health = 50
 var player = null
 var move = Vector2.ZERO
 var SPEED = 200
-onready var bala = preload("res://scenes/Bala.tscn")
+onready var bala = preload("res://scenes/wizard_bullet.tscn")
 onready var corazon = preload("res://scenes/PowerUpVida.tscn")
 var look_vec = Vector2.ZERO
 var look_vec2 = Vector2.ZERO
@@ -17,6 +18,7 @@ onready var animTree = $AnimationTree
 onready var animPlayer = $AnimationPlayer
 onready var playback = animTree.get("parameters/playback")
 onready var health_bar = $ProgressBar
+signal enemy_die
 
 func _ready():
 	animTree.active=true
@@ -31,23 +33,18 @@ func _physics_process(delta):
 		move = position.direction_to(player.position ) * SPEED
 	else:
 		move = Vector2.ZERO
-	
-	#if move.x < 0:
-	#	$AnimatedSprite.flip_h = true
-	#else:
-	#	$AnimatedSprite.flip_h = false
+	if move.x < 0:
+		$pivot.rotation = PI
+		$AnimatedSprite.flip_h = true
+	elif move.x > 0:
+		$pivot.rotation = 0
+		$AnimatedSprite.flip_h = false
 	
 	if not dead and not attacking:
 		if move.length() > 10: 
-			playback.travel("run")
-		#	$Idle.visible = false
-		#	$Walk.visible = true
-		#	$Attack.visible = false
+			playback.travel("walk")
 		else: 
-			playback.travel("idle")
-		#	$Idle.visible = true
-		#	$Walk.visible = false
-		#	$Attack.visible = false
+			playback.travel("Idle")
 		
 	move = move.normalized()
 	move_and_collide(move)
@@ -67,13 +64,14 @@ func take_damage(damage):
 		get_parent().enemy_die()
 		playback.travel("Death")
 	
-	
+
+
 func fire():
 	var Bala = bala.instance()
 	
 	look_vec = objective.position - global_position
 	look_vec = look_vec.normalized()
-	Bala.position = get_global_position() + look_vec * 90
+	Bala.position = get_node("pivot/spawn").get_global_position()
 	Bala.rotation = look_vec.angle()
 	get_parent().add_child(Bala)
 	
@@ -88,9 +86,10 @@ func _on_Area2D_body_entered(body):
 
 func _on_Timer_timeout():
 	if player != null and not dead:
-		$Timer.set_wait_time(3)
+		$Timer.start()
 		objective = player
-		playback.travel("AttackEnemy")
+		attacking = true
+		playback.travel("ataque1")
 		
 	
 
