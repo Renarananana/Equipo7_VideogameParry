@@ -4,8 +4,8 @@
 [ext_resource path="res://sprites/Parry (5).png" type="Texture" id=2]
 [ext_resource path="res://animations/Blocky5x7.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=1]
-size = 48
+[sub_resource type="DynamicFont" id=3]
+size = 64
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -27,16 +27,16 @@ margin_top = 7.0
 margin_right = 1017.0
 margin_bottom = 593.0
 
-[node name="Retrywin" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="credits" type="Button" parent="PanelContainer/VBoxContainer"]
 margin_right = 1010.0
-margin_bottom = 55.0
-custom_fonts/font = SubResource( 1 )
-text = "RETRY"
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 3 )
+text = "CREDITS"
 
 [node name="main_menu3" type="Button" parent="PanelContainer/VBoxContainer"]
-margin_top = 59.0
+margin_top = 75.0
 margin_right = 1010.0
-margin_bottom = 114.0
+margin_bottom = 130.0
 custom_fonts/font = SubResource( 2 )
 text = "Main Menu"
 

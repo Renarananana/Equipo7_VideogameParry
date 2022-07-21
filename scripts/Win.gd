@@ -1,17 +1,17 @@
 extends MarginContainer
 
 
-onready var retrywin = $PanelContainer/VBoxContainer/Retrywin  
+onready var credits = $PanelContainer/VBoxContainer/credits
 onready var main_menu3 = $PanelContainer/VBoxContainer/main_menu3
 
 func _ready():
-	retrywin.connect("pressed",self, "_on_retrywin_pressed")
+	credits.connect("pressed",self, "_on_credits_pressed")
 	main_menu3.connect("pressed",self, "_on_main_menu3_pressed")
 
 
 
-func _on_retry_pressed():
-	get_tree().change_scene("res://scenes/Main.tscn")
+func _on_credits_pressed():
+	get_tree().change_scene("res://scenes/Credits.tscn")
 	visible=false 
 
 
