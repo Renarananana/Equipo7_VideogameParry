@@ -100,7 +100,7 @@ func gain_health(health):
 func is_dead():
 	if HEALTH <= 0:
 		queue_free()
-		get_tree().change_scene("res://scenes/MENU.tscn")
+		get_tree().change_scene("res://scenes/Lose.tscn")
 		
 
 func _on_Timer_timeout():
