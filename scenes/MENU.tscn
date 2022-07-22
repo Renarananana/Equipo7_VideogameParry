@@ -1,25 +1,26 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/TEMA.tres" type="Theme" id=1]
-[ext_resource path="res://sprites/señales (3).png" type="Texture" id=2]
+[ext_resource path="res://sprites/Parry (3).png" type="Texture" id=2]
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=3]
 
 [node name="MENU" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -200.0
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
 
-[node name="fondo" type="Sprite" parent="."]
-position = Vector2( 505.667, 300.316 )
-scale = Vector2( 2.07333, 1.22274 )
+[node name="Parry(3)" type="Sprite" parent="."]
+position = Vector2( 514, 301 )
+scale = Vector2( 0.533333, 0.548148 )
 texture = ExtResource( 2 )
 
 [node name="Panel" type="PanelContainer" parent="."]
 margin_left = 32.0
 margin_top = 32.0
-margin_right = 212.0
-margin_bottom = 195.0
+margin_right = 146.0
+margin_bottom = 144.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
 size_flags_stretch_ratio = 2.47
@@ -27,23 +28,17 @@ size_flags_stretch_ratio = 2.47
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 173.0
-margin_bottom = 156.0
+margin_right = 107.0
+margin_bottom = 105.0
 size_flags_vertical = 0
 
 [node name="play" type="Button" parent="Panel/VBoxContainer"]
-margin_right = 166.0
+margin_right = 100.0
 margin_bottom = 47.0
 text = "PLAY"
 
 [node name="exit" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 51.0
-margin_right = 166.0
+margin_right = 100.0
 margin_bottom = 98.0
 text = "EXIT"
-
-[node name="credits" type="Button" parent="Panel/VBoxContainer"]
-margin_top = 102.0
-margin_right = 166.0
-margin_bottom = 149.0
-text = "CREDITS"

@@ -110,3 +110,11 @@ func _on_Timer_timeout():
 	attack()
 	
 
+
+func _on_Area2D_body_exited(body):
+	player = null
+
+func is_DEAD():
+	if health<= 0:
+		queue_free()
+		get_tree().change_scene("res://scenes/Win.tscn")
