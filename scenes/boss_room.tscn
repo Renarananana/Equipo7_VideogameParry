@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/TileMapBoss.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://scripts/boss_room.gd" type="Script" id=5]
 [ext_resource path="res://sprites/hud_vida.tres" type="Theme" id=6]
 [ext_resource path="res://scripts/boss_lifebar.gd" type="Script" id=7]
-[ext_resource path="res://scenes/flecha_nivel.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.494118, 0.0784314, 0.0784314, 1 )
@@ -43,6 +42,3 @@ custom_styles/bg = SubResource( 6 )
 value = 50.0
 percent_visible = false
 script = ExtResource( 7 )
-
-[node name="Area2D" parent="." instance=ExtResource( 8 )]
-position = Vector2( 485, -224 )

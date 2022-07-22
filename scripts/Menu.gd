@@ -9,6 +9,7 @@ onready var credits=$Panel/VBoxContainer/credits
 func _ready():
 	play.connect("pressed",self,"_on_play_pressed")
 	exit.connect("pressed",self,"_on_exit_pressed")
+	credits.connect("pressed",self,"_on_credits_pressed")
 	
 
 func _on_play_pressed():
@@ -17,4 +18,7 @@ func _on_play_pressed():
 
 func _on_exit_pressed():  #esta func no recibe argumento 
 	get_tree().quit()    #salida 
+
+func _on_credits_pressed():  #esta func no recibe argumento 
+	get_tree().change_scene("res://scenes/Credits.tscn")   
 	

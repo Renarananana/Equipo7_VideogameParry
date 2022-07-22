@@ -96,9 +96,9 @@ func take_damage(damage):
 	if health <= 0:
 		attacking = true
 		get_parent().enemy_die()
+		get_tree().change_scene("res://scenes/Win.tscn")
 		playback.travel("die")
 		emit_signal("update_health_boss", health)
-		return
 	else:
 		playback.travel("take_damage")
 		emit_signal("update_health_boss", health)
@@ -114,7 +114,3 @@ func _on_Timer_timeout():
 func _on_Area2D_body_exited(body):
 	player = null
 
-func is_DEAD():
-	if health<= 0:
-		queue_free()
-		get_tree().change_scene("res://scenes/Win.tscn")
