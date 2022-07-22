@@ -16,6 +16,7 @@ onready var tiempo_dash = $ProgressBar
 var direction = Vector2.DOWN
 var dash = false
 var dash_ready = true
+var escena = ""
 
 func _unhandled_input(event):
 	if event.is_action_pressed("parry"):
@@ -100,7 +101,7 @@ func gain_health(health):
 func is_dead():
 	if HEALTH <= 0:
 		queue_free()
-		get_tree().change_scene("res://scenes/MENU.tscn")
+		get_tree().change_scene("res://scenes/"+ escena + ".tscn")
 		
 
 func _on_Timer_timeout():
